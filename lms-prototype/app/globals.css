@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+  --accent: #6366f1;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --radius: 0.75rem;
+}
+
+/* Per-application accent colours (Section 5: one home per item, distinct apps) */
+.app-site {
+  --background: #fafaf8;
+  --surface: #ffffff;
+  --foreground: #0b1220;
+  --muted: #f3f2ee;
+  --muted-foreground: #5b6475;
+  --border: #e7e4dc;
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --accent: #f59e0b;
+  --accent-2: #14b8a6;
+  --ink: #07111f;
+  --ink-foreground: #f8fafc;
+  --site-hero: radial-gradient(1200px 600px at 10% -10%, rgba(20,184,166,0.22), transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, rgba(245,158,11,0.18), transparent 55%),
+    linear-gradient(180deg, #07111f 0%, #0b1b2e 55%, #0d2433 100%);
+  --site-grid: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+}
+.app-lms {
+  --primary: #4f46e5;
+  --accent: #6366f1;
+}
+.app-staff {
+  --primary: #1d4ed8;
+  --accent: #2563eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --radius-xl: var(--radius);
+  --radius-2xl: calc(var(--radius) + 0.25rem);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sinhala {
+  font-family: var(--font-sinhala), "Iskoola Pota", "Nirmala UI", var(--font-sans), system-ui, sans-serif;
+}
+
+.app-site .font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes site-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes site-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes site-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes site-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.app-site .animate-fade-up { animation: site-fade-up .7s ease both; }
+.app-site .animate-fade-up-delay { animation: site-fade-up .8s ease .12s both; }
+.app-site .animate-fade-up-delay-2 { animation: site-fade-up .9s ease .22s both; }
+.app-site .animate-float { animation: site-float 6s ease-in-out infinite; }
+.app-site .animate-marquee { animation: site-marquee 28s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .app-site .animate-fade-up,
+  .app-site .animate-fade-up-delay,
+  .app-site .animate-fade-up-delay-2,
+  .app-site .animate-float,
+  .app-site .animate-marquee { animation: none !important; }
+}
